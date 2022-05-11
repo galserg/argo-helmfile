@@ -71,10 +71,10 @@ if [[ "${HELMFILE_GLOBAL_OPTIONS}" ]]; then
 fi
 
 echoerr "$(${helmfile} --version)"
-echoerr "$(env)"
+echoerr "$(env | grep ARGOCD_)"
 
 
-${helmfile} -e rpod -f producer.yaml \
+${helmfile} -e prod -f producer.yaml \
   template \
   --skip-deps ${INTERNAL_HELMFILE_TEMPLATE_OPTIONS} \
   ${HELMFILE_TEMPLATE_OPTIONS}
